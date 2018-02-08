@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': 'mc_magic_mirror',
         'USER': 'root',
         'PASSWORD': 'pass',
-        'HOST': '10.190.155.92',
+        'HOST': 'db',
         'PORT': '3306',
     }
 }
