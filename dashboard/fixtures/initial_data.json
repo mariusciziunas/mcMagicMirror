@@ -1,0 +1,9 @@
+[
+  {
+    "model": "dashboard.state",
+    "pk": "alarm_active",
+    "fields": {
+      "value": "0"
+    }
+  }
+]

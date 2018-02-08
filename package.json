@@ -1,0 +1,46 @@
+{
+  "name": "mcmagicmirror",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariusciziunas/mcMagicMirror.git"
+  },
+  "author": "Marius Ciziunas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariusciziunas/mcMagicMirror/issues"
+  },
+  "homepage": "https://github.com/mariusciziunas/mcMagicMirror#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "cron": "^1.3.0",
+    "moment": "^2.19.3",
+    "react": "^16.1.1",
+    "react-big-calendar": "^0.17.0",
+    "react-dom": "^16.1.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-youtube": "^7.5.0",
+    "react-youtube-playlist": "^2.2.7",
+    "semantic-ui-react": "^0.76.0",
+    "webpack": "^3.8.1",
+    "webpack-bundle-tracker": "^0.2.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "react-live-clock": "^2.0.2",
+    "semantic-ui": "^2.2.13"
+  }
+}

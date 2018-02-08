@@ -1,0 +1,16 @@
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MC Magic Mirror</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/semantic.min.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css"/>
+</head>
+
+<body>
+    <div id="react-app"></div>
+    {% render_bundle 'main' %}
+</body>
+</html>

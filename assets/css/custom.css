@@ -1,0 +1,26 @@
+.ui.grid.main-wrapper {
+	margin: 0px !important;
+	width: 100% !important;
+
+}
+/*
+.bordered {
+    border-style: solid;
+}
+*/
+.highlight {
+    color: red;
+}
+
+.no-margin {
+    margin: 10px 0 0 0 !important;
+}
+
+.no-margin-top {
+    margin-top: 0px !important;
+}
+
+.no-padding-left-right {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
