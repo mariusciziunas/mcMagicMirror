@@ -63,7 +63,7 @@ MIDDLEWARE = [
 ]
 
 CRONJOBS = [
-    ('* * * * *', 'dashboard.cron_jobs.set_alarm_clock_job', '>> /tmp/cron_jobs.log')
+    ('* * * * *', 'dashboard.cron_jobs.set_alarm_clock_job', '>> /var/log/cron_jobs.log')
 ]
 
 ROOT_URLCONF = 'mcMagicMirror.urls'
