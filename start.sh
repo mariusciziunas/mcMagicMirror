@@ -1,5 +1,7 @@
 #!/bin/bash
 
+npm install
+./node_modules/.bin/webpack --config webpack.config.js --watch
 pip3 install -r requirements.txt
 python3 manage.py migrate
 python3 manage.py loaddata initial_data

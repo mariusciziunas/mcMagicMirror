@@ -5,6 +5,8 @@ RUN apt-get update && \
     apt-get install -y \
     cron
 
+RUN apt-get install -y npm
+
 RUN mkdir /code
 
 WORKDIR /code
