@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^alarm', views.video, name='video'),
     url(r'^disable-alarm', views.disable_alarm, name='disable_alarm'),
     url(r'^notes', views.notes, name='notes'),
+    url(r'^turn-on-led', views.turn_on_led, name='turn_on_led'),
+    url(r'^turn-off-led', views.turn_off_led, name='turn_off_led'),
     url(r'^', views.index, name='dashboard')
 
 ]

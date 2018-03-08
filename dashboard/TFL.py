@@ -1,5 +1,6 @@
 import requests
 from datetime import datetime
+import configparser
 
 class TFL(object):
     def __init__(self, app_id, app_key):
@@ -29,8 +30,15 @@ class TFL(object):
         response = requests.get(
             self._url + "/StopPoint/" + stop_point + "/arrivals?app_key=" + self._app_key + "&app_id=" + self._app_id)
         result_arrivals = []
+        config = configparser.ConfigParser()
+        config.read('./config.ini')
+        bus_id_to_exclude = config['DEFAULT']['tfl.bus.exclude']
         for api_arrival in response.json():
             is_arrival_in_result = False
+
+            if (api_arrival['lineId'] == bus_id_to_exclude):
+                continue
+
             for result_arrival in result_arrivals:
                 if (result_arrival['lineId'] == api_arrival['lineId']):
                     arrivalTime = datetime.strptime(api_arrival['expectedArrival'], '%Y-%m-%dT%H:%M:%SZ').strftime('%H:%M')

@@ -22,8 +22,8 @@ class YoutubeAlarm extends Component {
         }
 
         const opts = {
-            height: '600',
-            width: '800',
+            height: '800',
+            width: '1020',
             playerVars: { // https://developers.google.com/youtube/player_parameters
                 autoplay: 1,
                 listType: 'playlist',

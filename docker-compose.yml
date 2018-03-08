@@ -2,6 +2,7 @@ version: '3'
 
 services:
   db:
+#    image: mysql
     image: hypriot/rpi-mysql:5.5
     restart: always
     expose:
@@ -15,10 +16,10 @@ services:
       MYSQL_DATABASE: mc_magic_mirror
       MYSQL_USER: root
 
-  mcmagicmirror:
-    build: .
-    image: mcmagicmirror:latest
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
+#  mcmagicmirror:
+#    build: .
+#    image: mcmagicmirror:latest
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - db

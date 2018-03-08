@@ -149,9 +149,20 @@ class DashboardWrapper extends Component {
                 cache: false,
                 success: function (data) {
                     if (data.status.value) {
+
+            $.ajax({
+                url: '/turn-on-led',
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    
+                }.bind(this),
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
                         this.setState({ isRedirectToAlarm: true });
                     }
-
                 }.bind(this),
                 error: function (xhr, status, error) {
                     console.log(error);

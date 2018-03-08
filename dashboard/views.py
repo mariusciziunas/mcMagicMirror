@@ -1,32 +1,41 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
-from django.http import JsonResponse
-from django.template.response import TemplateResponse
 import coreapi
-# import json
+from django.http import JsonResponse
+from django.shortcuts import render
 import itertools
 from datetime import datetime
 from datetime import timedelta
 from pyicloud import PyiCloudService
 from .TFL import TFL
-import sys
-import click
-import os
-import urllib3
 from .national_rail import national_rail
 from .News import News
 import operator
 from .models import Config, State, Note
-from django.http import Http404
 import configparser
-
-def video(request):
-    return render(request, 'dashboard/youtube_video.html')
+import pigpio
 
 def index(request):
     return render(request, 'dashboard/index.html')
+
+def video(request):
+    turn_on_led(request)
+    return render(request, 'dashboard/youtube_video.html')
+
+def turn_on_led(request):
+    pi = pigpio.pi()
+    pi.set_PWM_dutycycle(17, 255)
+    print('LED on')
+    response = {}
+    return JsonResponse(response)
+
+def turn_off_led(request):
+    pi = pigpio.pi()
+    pi.set_PWM_dutycycle(17, 1)
+    print('LED off')
+    response = {}
+    return JsonResponse(response)
 
 def alarm_status(request):
     state = request.GET.get('state', 'alarm_active')
@@ -38,7 +47,6 @@ def alarm_status(request):
         response['status']['value'] = int(state.value) == 1
     except State.DoesNotExist:
         print('state [' + state + '] does not exist in the DB')
-
     return JsonResponse(response)
 
 def notes(request):
@@ -61,6 +69,7 @@ def disable_alarm(request):
     state.value = 0
     state.last_updated = datetime.now()
     state.save()
+    turn_off_led(request)
     response = {}
     response['status'] = {}
     response['status']['key'] = alarm_state
@@ -93,7 +102,6 @@ def get_news(sources, count):
     api_key = Config.objects.get(key='newsapi.key')
     news_api = News(api_key.value)
     response = []
-
     for source in sources.split(','):
         news = news_api.get_news_by_source(source)
         news = news[:count]
@@ -113,7 +121,6 @@ def get_train_departures(request):
     rowCount = int(request.GET.get('rowCount', 20))
     return JsonResponse(get_trains(stationCode, rowCount))
 
-
 def get_bus_arrivals2(request):
     app_id = Config.objects.get(key='tfl.id')
     app_key = Config.objects.get(key='tfl.key')
@@ -123,7 +130,6 @@ def get_bus_arrivals2(request):
     # default value is waterman to kew arrivals
     response = api.get_arrivals_for_stop_point(request.GET.get('stopPoint', '490006297W'))
     return JsonResponse(response)
-
 
 def get_bus_arrivals(request):
     app_id = Config.objects.get(key='tfl.id').value
@@ -228,7 +234,6 @@ def __get_forecast():
     del weather_forecast[-1]
     return weather_forecast
 
-
 def __get_weather_current():
     app_id = Config.objects.get(key='openweather.key').value
     client = coreapi.Client()
@@ -239,7 +244,6 @@ def __get_weather_current():
     result.append(current_weather)
     return result
 
-
 def __get_forecast_for_day(weather_forecast):
     result = []
     for forecast_item in weather_forecast:
@@ -249,7 +253,6 @@ def __get_forecast_for_day(weather_forecast):
             midday_forecast_item['dt'] = dt.strftime('%a')
             result.append(midday_forecast_item)
     return result
-
 
 def __convert_2_api_format(forecast):
     forecast_item = {}

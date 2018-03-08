@@ -35,7 +35,12 @@ SECRET_KEY = 'qj3+njao0yenglufahe(da8pk0+n#w#@cyyv)_w5lc3#_*w#93'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+'169.254.221.100',
+'localhost',
+'0.0.0.1',
+'127.0.0.1'
+]
 
 
 # Application definition
@@ -63,7 +68,7 @@ MIDDLEWARE = [
 ]
 
 CRONJOBS = [
-    ('* * * * *', 'dashboard.cron_jobs.set_alarm_clock_job', '>> /var/log/cron_jobs.log')
+    ('* * * * *', 'dashboard.cron_jobs.set_alarm_clock_job', '>> /home/pi/mcMagicMirror/cron.log')
 ]
 
 ROOT_URLCONF = 'mcMagicMirror.urls'
@@ -96,7 +101,7 @@ DATABASES = {
         'NAME': 'mc_magic_mirror',
         'USER': 'root',
         'PASSWORD': 'pass',
-        'HOST': 'db',
+        'HOST': '192.168.0.36',
         'PORT': '3306',
     }
 }

@@ -1,5 +1,4 @@
 django==2.0.1
-psycopg2
 mysqlclient==1.3.12
 coreapi==2.3.3
 tfl-api==0.1
