@@ -23,6 +23,18 @@ def video(request):
     turn_on_led(request)
     return render(request, 'dashboard/youtube_video.html')
 
+def alarm_status(request):
+    state = request.GET.get('state', 'alarm_active')
+    response = {}
+    try:
+        response['status'] = {}
+        state = State.objects.get(key=state)
+        response['status']['key'] = state.key
+        response['status']['value'] = int(state.value) == 1
+    except State.DoesNotExist:
+        print('state [' + state + '] does not exist in the DB')
+    return JsonResponse(response)
+
 def turn_on_led(request):
     pi = pigpio.pi()
     pi.set_PWM_dutycycle(17, 255)
@@ -35,18 +47,6 @@ def turn_off_led(request):
     pi.set_PWM_dutycycle(17, 1)
     print('LED off')
     response = {}
-    return JsonResponse(response)
-
-def alarm_status(request):
-    state = request.GET.get('state', 'alarm_active')
-    response = {}
-    try:
-        response['status'] = {}
-        state = State.objects.get(key=state)
-        response['status']['key'] = state.key
-        response['status']['value'] = int(state.value) == 1
-    except State.DoesNotExist:
-        print('state [' + state + '] does not exist in the DB')
     return JsonResponse(response)
 
 def notes(request):

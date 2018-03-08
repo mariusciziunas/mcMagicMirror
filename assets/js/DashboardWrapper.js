@@ -149,19 +149,9 @@ class DashboardWrapper extends Component {
                 cache: false,
                 success: function (data) {
                     if (data.status.value) {
-
-            $.ajax({
-                url: '/turn-on-led',
-                dataType: 'json',
-                cache: false,
-                success: function (data) {
-                    
-                }.bind(this),
-                error: function (xhr, status, error) {
-                    console.log(error);
-                }
-            });
+                        this.enableLED();
                         this.setState({ isRedirectToAlarm: true });
+
                     }
                 }.bind(this),
                 error: function (xhr, status, error) {
@@ -171,6 +161,19 @@ class DashboardWrapper extends Component {
         }.bind(this), 1000);
     }
 
+    enableLED() {
+        $.ajax({
+            url: '/turn-on-led',
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+
+            }.bind(this),
+                error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
 
     startPoll() {
         this.intervalNews = setInterval(function () {

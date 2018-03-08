@@ -22,8 +22,8 @@ class YoutubeAlarm extends Component {
         }
 
         const opts = {
-            height: '800',
-            width: '1020',
+            height: '600',
+            width: '800',
             playerVars: { // https://developers.google.com/youtube/player_parameters
                 autoplay: 1,
                 listType: 'playlist',
@@ -32,19 +32,25 @@ class YoutubeAlarm extends Component {
             }
         };
         return (
-            <YouTube
-                videoId={this.state.videoId}
-                opts={opts}
-                onReady={this.playerReady}
-                onEnd={this.handleOnEnd}
-                onPlay={this.handleOnPlay}
-            />
+            <div className="ui relaxed grid container">
+                <div class='two column row'>
+                    <div class='center floated column'>
+                        <YouTube
+                            videoId={this.state.videoId}
+                            opts={opts}
+                            onReady={this.playerReady}
+                            onEnd={this.handleOnEnd}
+                            onPlay={this.handleOnPlay}
+                        />
+                    </div>
+                </div>
+            </div>
         );
     }
 
     handleOnPlay(event) {
         this.setState({ isPlaying: true });
-        event.target.setPlaybackQuality('highres');
+        event.target.setPlaybackQuality('medium');
     }
 
     handleOnEnd(event) {
