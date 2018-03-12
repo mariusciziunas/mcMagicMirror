@@ -15,6 +15,7 @@ import operator
 from .models import Config, State, Note
 import configparser
 import pigpio
+import RPi.GPIO as GPIO
 
 def index(request):
     return render(request, 'dashboard/index.html')
@@ -36,16 +37,25 @@ def alarm_status(request):
     return JsonResponse(response)
 
 def turn_on_led(request):
-    pi = pigpio.pi()
-    pi.set_PWM_dutycycle(17, 255)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(24,GPIO.OUT)
+    GPIO.output(24,100)
+
+
     print('LED on')
     response = {}
     return JsonResponse(response)
 
 def turn_off_led(request):
-    pi = pigpio.pi()
-    pi.set_PWM_dutycycle(17, 1)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(24,GPIO.OUT)
+    GPIO.output(24,False)
+    GPIO.cleanup()
+
+
+
     print('LED off')
+    ##pi.stop()
     response = {}
     return JsonResponse(response)
 
