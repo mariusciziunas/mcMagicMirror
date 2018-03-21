@@ -53,13 +53,6 @@ class YoutubeAlarm extends Component {
                          </Header>
                      </div>
                 </div>
-                <div class='row'>
-                    <div class="column">
-                        <Header as='h1' className='huge-text'>
-                            <Clock format={'D MMMM ddd (w) , YYYY HH:mm:ss'} ticking={true}/>
-                         </Header>
-                     </div>
-                </div>
             </div>
         );
     }
