@@ -17,9 +17,6 @@ class WeatherItem extends Component {
 						{this.props.forecast.humidity}
 					</div>
 					<div className='column'>
-						{this.props.forecast.description}
-					</div>
-					<div className='column'>
 						<img src={"static/images/" + this.props.forecast.icon + '.png'} />
 						
 					</div>
