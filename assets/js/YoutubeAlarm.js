@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import YouTube from 'react-youtube';
 import { Redirect } from 'react-router-dom';
+import {Button, Container, Header} from 'semantic-ui-react';
+import Clock from 'react-live-clock';
 
 class YoutubeAlarm extends Component {
 
@@ -23,7 +25,7 @@ class YoutubeAlarm extends Component {
 
         const opts = {
             height: '600',
-            width: '800',
+            width: '780',
             playerVars: { // https://developers.google.com/youtube/player_parameters
                 autoplay: 1,
                 listType: 'playlist',
@@ -43,6 +45,20 @@ class YoutubeAlarm extends Component {
                             onPlay={this.handleOnPlay}
                         />
                     </div>
+                </div>
+                <div class='row'>
+                    <div class="column">
+                        <Header as='h1' className='huge-text'>
+                            <Clock format={'D MMMM ddd (w) , YYYY HH:mm:ss'} ticking={true}/>
+                         </Header>
+                     </div>
+                </div>
+                <div class='row'>
+                    <div class="column">
+                        <Header as='h1' className='huge-text'>
+                            <Clock format={'D MMMM ddd (w) , YYYY HH:mm:ss'} ticking={true}/>
+                         </Header>
+                     </div>
                 </div>
             </div>
         );

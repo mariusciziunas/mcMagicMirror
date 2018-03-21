@@ -24,3 +24,39 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+
+.huge-text {
+    font-size: 4rem !important;
+}
+
+.full-height {
+    height: 105%;
+}
+
+.style-template {
+    background-color: #000000;
+    color: #FFFFFF !important;
+    height: 100%;
+}
+
+h1, h2, h3 {
+    color: #FFFFFF !important;
+}
+
+.huge-text {
+    font-size: 4rem !important;
+}
+
+.full-height {
+    height: 105%;
+}
+
+.style-template {
+    background-color: #000000;
+    color: #FFFFFF !important;
+    height: 100%;
+}
+
+h1, h2, h3 {
+    color: #FFFFFF !important;
+}

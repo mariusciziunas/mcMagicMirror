@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 ReactDOM
     .render((
         <Router>
-            <div>
+            <div className='style-template'>
                 <Route exact path="/" component={DashboardWrapper} />
                 <Route path="/alarm" component={YoutubeAlarm} />
             </div>

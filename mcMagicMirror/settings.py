@@ -36,7 +36,7 @@ SECRET_KEY = 'qj3+njao0yenglufahe(da8pk0+n#w#@cyyv)_w5lc3#_*w#93'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-'169.254.159.90',
+'169.254.221.100',
 'localhost',
 '0.0.0.1',
 '127.0.0.1'
@@ -101,7 +101,7 @@ DATABASES = {
         'NAME': 'mc_magic_mirror',
         'USER': 'root',
         'PASSWORD': 'pass',
-        'HOST': '169.254.159.90',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }

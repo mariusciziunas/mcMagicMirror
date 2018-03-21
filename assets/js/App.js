@@ -1,23 +1,16 @@
-import React, {Component} from 'react';
-import { StaticRouter, Switch, Route } from 'react-router';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import DashboardWrapper from './DashboardWrapper';
 import YoutubeAlarm from './YoutubeAlarm';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-
-class App extends Component {
-
-    render() {
-
-
-        return (
-            <div>
-                <Switch>
-                    <Route path="/" component={DashboardWrapper} />
-                    <Route path="/alarm" component={YoutubeAlarm} />
-                </Switch>
+ReactDOM
+    .render((
+        <Router>
+            <div className='style-template'>
+                <Route exact path="/" component={DashboardWrapper} />
+                <Route path="/alarm" component={YoutubeAlarm} />
             </div>
-        )
-    }
-}
-
-export default App
+        </Router>
+    ), document.getElementById('react-app')
+);

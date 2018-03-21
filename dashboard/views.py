@@ -40,9 +40,6 @@ def turn_on_led(request):
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(24,GPIO.OUT)
     GPIO.output(24,100)
-
-
-    print('LED on')
     response = {}
     return JsonResponse(response)
 
@@ -51,11 +48,6 @@ def turn_off_led(request):
     GPIO.setup(24,GPIO.OUT)
     GPIO.output(24,False)
     GPIO.cleanup()
-
-
-
-    print('LED off')
-    ##pi.stop()
     response = {}
     return JsonResponse(response)
 
