@@ -158,7 +158,7 @@ class DashboardWrapper extends Component {
                     console.log(error);
                 }
             });
-        }.bind(this), 1000);
+        }.bind(this), 20000);
     }
 
     enableLED() {
