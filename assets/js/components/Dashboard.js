@@ -19,7 +19,7 @@ class Dashboard extends Component {
 
                     <Container as='div' className='column'>
                         <Header as='h1'>
-                            <Clock format={'D MMMM ddd (w) , YYYY HH:mm:ss'} ticking={true}/>
+                            <Clock format={'D MMMM ddd (w) , YYYY HH:mm:ss'} ticking={true}  />
                         </Header>
                         <Weather forecast={this.props.weatherForecast}/>
                         <Header as='h2'>Don't forget</Header>

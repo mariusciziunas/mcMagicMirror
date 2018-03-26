@@ -8,9 +8,8 @@ def set_alarm_clock_job():
         pass
 
     alarm_time = datetime.strptime(config.value, '%H:%M')
-
     now = datetime.now()
-    if ((now.hour == alarm_time.hour) and (now.minute == alarm_time.minute)):
+    if ((now.hour + 1 == alarm_time.hour) and (now.minute == alarm_time.minute)):
         alarm_clock_state = 'alarm_active'
         try:
             state = State.objects.get(key = alarm_clock_state)

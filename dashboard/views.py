@@ -167,8 +167,8 @@ def get_icloud_events(days):
     api_response['events'] = icloud_api.calendar.events(from_dt, to_dt)
     for api_event in api_response['events']:
         event = {}
-        event['startDate'] = get_date_time(api_event['localStartDate'])
-        event['endDate'] = get_date_time(api_event['localEndDate'])
+        event['startDate'] = get_date_time(api_event['startDate'])
+        event['endDate'] = get_date_time(api_event['endDate'])
         event['title'] = api_event['title']
         event['id'] = api_event['guid']
         result['events'].append(event)
